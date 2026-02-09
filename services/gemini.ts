@@ -2,7 +2,7 @@
 import { GoogleGenAI } from "@google/genai";
 
 // --- CONFIGURATION ---
-const apiKey = 'AIzaSyCoKjGzF9uNmOP4KHwWfEu-FLa3VHqYNP8'; 
+const apiKey = process.env.GEMINI_API_KEY;
 
 const ai = new GoogleGenAI({ apiKey });
 
@@ -13,7 +13,7 @@ export const generateResponse = async (
   try {
     // Check if key is missing
     if (!apiKey) {
-        return "Configuration Error: Please add your Google API Key to 'services/gemini.ts'.";
+        return "Configuration Error: Please set the GEMINI_API_KEY environment variable.";
     }
 
     const model = 'gemini-2.5-flash';
